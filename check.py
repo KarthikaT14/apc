@@ -26,7 +26,7 @@ def parse_apc(x, lod_default=100.0):
     s = str(x).replace(",", "").strip()
     if s.startswith("<"):
           lod = float(s[1:]) if s[1:].replace(".","",1).isdigit() else lod_default
-        return lod / 2
+    return lod / 2
     try: return float(s)
     except: return np.nan
 
@@ -220,4 +220,5 @@ if __name__ == '__main__':
         train_and_save_model(TRAINING_FILE_PATH)
 
     run_prediction_app()
+
 
