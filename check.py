@@ -22,7 +22,6 @@ TARGET_COLUMN = "log10_APC"
 
 
 def parse_apc(x, lod_default=100.0):
-    """Handles '<LOD>' values by returning LOD/2 and converts to float."""
     s = str(x).replace(",", "").strip()
     if s.startswith("<"):
           lod = float(s[1:]) if s[1:].replace(".","",1).isdigit() else lod_default
@@ -31,7 +30,6 @@ def parse_apc(x, lod_default=100.0):
     except: return np.nan
 
 def create_features(df):
-    """Engineers features and renames columns for the model."""
     df[DATE_COL] = pd.to_datetime(df[DATE_COL], errors="coerce", dayfirst=True)
     
     df["Month"] = df[DATE_COL].dt.month
@@ -220,5 +218,6 @@ if __name__ == '__main__':
         train_and_save_model(TRAINING_FILE_PATH)
 
     run_prediction_app()
+
 
 
